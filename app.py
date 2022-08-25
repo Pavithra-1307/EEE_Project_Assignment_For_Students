@@ -92,7 +92,7 @@ def delete(id):
     if request.method == 'POST':
         if employee:
             # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-            # ☛ Req -11 : Ensure given record (1) get deleted and (2) Committed
+            # ☛ Req -12 : Ensure given record (1) get deleted and (2) Committed
             # """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
             return redirect('/data')
 
@@ -101,5 +101,5 @@ def delete(id):
 
 if __name__ == '__main__':
     # """""""""""""""""""""""""""""""""""
-    # ☛ Req -12 : Run app in debug mode
+    # ☛ Req -13 : Run app in debug mode
     # """""""""""""""""""""""""""""""""""
