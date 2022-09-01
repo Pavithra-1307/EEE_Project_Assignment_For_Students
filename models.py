@@ -1,29 +1,21 @@
-# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-# ☛ Req -1 : Install package flask_sqlalchemy
-# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-
-
-# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-# ☛ Req -2 : Create db object from SQLAlchemy class
-# """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-class Employee(db.Model):
+mydb = SQLAlchemy()
+class Employee(mydb.Model):
     __tablename__ = "Employee"
+    id = mydb.Column(mydb.Integer, primary_key=True)
+    employee_id = mydb.Column(mydb.Integer(),unique=True)
+    name = mydb.Column(mydb.String())
+    age = mydb.Column(mydb.Integer())
+    position = mydb.Column(mydb.String())
+    email = mydb.Column(mydb.String())
 
-    id = db.Column(db.Integer, primary_key=True)
-    # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    # ☛ Req -3 : Define column employee_id with unique key constraint, this should be of type integer
-    # """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-    name = db.Column(db.String())
-    age = db.Column(db.Integer())
-    position = db.Column(db.String())
-
-    def __init__(self, employee_id, name, age, position):
+    def __init__(self, employee_id, name, age, position,email):
         self.employee_id = employee_id
         self.name = name
         self.age = age
         self.position = position
+        self.email = email;
 
     def __repr__(self):
-        return f"{self.name}:{self.employee_id}"
+     return f"{self.name}:{self.employee_id}:{self.position}"
