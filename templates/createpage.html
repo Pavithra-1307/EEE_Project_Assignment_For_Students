@@ -1,7 +1,96 @@
-<form action='' method = "POST">
-  <p>employee ID <input type = "integer" name = "employee_id" /></p>
-  <p>name <input type = "text" name = "name" /></p>
-  <p>age <input type = "integer" name = "age" /></p>
-  <p>position <input type = "text" name = "position" /></p>
-  <p><input type = "submit" value = "Submit" /></p>
-</form>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>CreatePage</title>
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+	</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+	  <style>
+    body
+    {
+            background-color: rgb(224 227 239);
+            background-size: 280%;
+            background-position: -400px 0px;
+            margin-right: 80px;
+            margin-left: 80px;
+    }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="myctrl">
+	
+	<div class="container">
+	<label class="display-3 text-info"  > Add Employee Details </label>
+    <div class="formname">
+
+	<form action='' method="post"  class="col-4" name="formname" id="formname" >
+
+		<div class="form-group">
+			<label class="text-primary">Employee ID</label>
+			<input class="form-control" type="number" ng-model="employee_id" name="employee_id" ng-minlength=3 ng-required="true" ng-pattern="/^[0-9]*$/">
+			<span class="text-danger" ng-show="formname.employee_id.$touched && formname.employee_id.$error.required">
+				<br> This field is required.<span class="text-danger" ng-show="formname.employee_id.$error.pattern">
+				<br>ID can have only Numbers.
+				</span>
+			</span>
+		</div>
+
+		<div class="form-group">
+		<label class="text-primary">Employee Name:</label>
+		<input  class="form-control" type="text" ng-model="name" id="style" name="name" ng-minlength=3 ng-required="true" ng-pattern="/^[\w\s]*$/">
+			<span class="text-danger" ng-show="formname.name.$touched && formname.name.$error.required">
+			<br>Name must be required.
+			</span>
+		</div>
+
+		<div class="form-group">
+		<label class="text-primary">Position:</label>
+		<input class="form-control" type="text" name="position" id="style" ng-model="position" ng-required="true">
+			<span class="text-danger" ng-show="formname.position.$touched && formname.position.$error.required">
+			<br>Position must be required.
+			</span>
+		</div>
+
+		<div class="form-group">
+		<label class="text-primary">Age:</label>
+		<input class="form-control" type="integer" name="age" id="style" ng-model="age" ng-required="true" ng-pattern="/^(?:1[8-9]|[2-5][0-9]|60)$/">
+			<span class="text-danger" ng-show="formname.age.$touched && formname.age.$error.required">
+ 			<br>This field is required.
+			</span>
+			<span class="text-danger" ng-show="formname.age.$error.pattern">
+			<br>Age is invalid
+			</span>
+		</div>
+
+		<div class="form-group">
+			<label class="text-primary">Email:</label>
+			<input class="form-control" type="email" name="email" id="style" ng-model="email" ng-required="true" ng-pattern="/^[a-z0-9/_$#%]+@[a-z]+[.]+[a-z]+$/">
+			<span ng-show="formname.email.$touched && formname.email.$error.required">
+			<br>Email is required.
+			</span>
+			<span ng-show="formname.email.$error.pattern">
+			<br>Email has to be in format abc@gmail.com.
+			</span>
+		</div>
+
+		<input type="submit"  id="submit" ng-click="calculate()">
+
+	</form>
+
+	<script type="text/javascript">
+		var app = angular.module('myApp', []);
+		app.controller('myctrl', function($scope) {
+			$scope.value = 0;
+
+			$scope.calculate = function() {
+				$scope.value += 1;
+			}
+		});
+	</script>
+	</div>
+	</div>
+</body>
+</html>
